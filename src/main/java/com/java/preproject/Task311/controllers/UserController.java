@@ -22,6 +22,6 @@ public class UserController {
     public String getUserInfo(Authentication authentication, Model model) {
         User user = userService.findByUserName(authentication.getName());
         model.addAttribute("user", user);
-        return "userInfo";
+        return "BootstrapUserPage";
     }
 }

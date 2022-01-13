@@ -46,14 +46,14 @@ public class DoAfterLoadProject {
 
 
         user1.setRoles(Collections.singleton(roleUser));
-        user1.setUsername("user1");
+        user1.setEmail("user1@mail.ru");
         user1.setPassword("100");
         user1.setAge(25);
         user1.setName("user_name_1");
         user1.setLastName("user_female_1");
 
         user2.setRoles(Collections.singleton(roleAdmin));
-        user2.setUsername("user2");
+        user2.setEmail("user2@mail.ru");
         user2.setPassword("100");
         user2.setAge(27);
         user2.setName("user_name_2");
@@ -61,7 +61,7 @@ public class DoAfterLoadProject {
 
 
         user3.setRoles(roleSet);
-        user3.setUsername("user3");
+        user3.setEmail("user3@mail.ru");
         user3.setPassword("100");
         user3.setAge(27);
         user3.setName("user_name_3");

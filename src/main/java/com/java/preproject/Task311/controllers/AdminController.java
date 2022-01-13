@@ -31,13 +31,13 @@ public class AdminController {
     @GetMapping("/users")
     public String getUserList(Model model) {
         model.addAttribute("users", userService.getUsersList());
-        return "users";
+        return "BootstrapUsers";
     }
 
     @GetMapping("/newUser")
     public String newUser(@ModelAttribute("user") User user, Model model) {
         model.addAttribute("AllRoles", roleService.getAllRoles());
-        return "newUser";
+        return "BootstrapUsers";
     }
 
 
@@ -63,13 +63,13 @@ public class AdminController {
 
         model.addAttribute("user", userService.findById(id).orElse(new User()));
         model.addAttribute("AllRoles", roleService.getAllRoles());
-        return "user-update";
+        return "BootstrapUsers";
     }
 
     @PostMapping("/updateUser/{id}")
     public String update(@ModelAttribute("user") @Valid User user, BindingResult result) {
         if (result.hasErrors()) {
-            return "user-update";
+            return "BootstrapUsers";
         }
         Set<Role> roleSet = new HashSet<>();
         for (Role role : user.getRoles()) {

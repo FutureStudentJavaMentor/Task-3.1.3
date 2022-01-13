@@ -21,8 +21,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        com.java.preproject.Task311.model.User user = userRepository.findByUsername(username);
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        com.java.preproject.Task311.model.User user = userRepository.findByEmail(email);
         if (user == null) {
             throw new UsernameNotFoundException("User name is null");
         }
