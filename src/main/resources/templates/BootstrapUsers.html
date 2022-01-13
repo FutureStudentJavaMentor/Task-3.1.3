@@ -6,7 +6,7 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<!--    <script type="text/javascript" th:src="@{js/main.js}" src="../static/main.js"></script>-->
+    <script type="text/javascript" src="../static/main.js" th:src="@{/main.js}" ></script>
 
 </head>
 <body>
@@ -43,7 +43,7 @@
                 </li>
             </ul>
         </div>
-        <div class="col-lg-9">
+        <div class="col-lg-9 bg-light">
             <div class="page-header">
                 <br>
                 <h2>Admin panel</h2>
@@ -88,11 +88,7 @@
                                     <td><a th:each="role:${user.getRoles()}"
                                            th:text="${role.getName().substring(5)+' '}"></a></td>
                                     <td>
-                                        <button type="button" class="btn btn-info btn-mg eBtn"
-                                                data-toggle="modal" data-target="#Edit_Modal">
-                                            Edit
-                                        </button>
-
+                                        <button class="btn btn-info" th:href="@{/admin//updateUser/{id}(id=${user.id})}" data-toggle="modal" data-target="#Edit_Modal">Edit</button>
                                     </td>
                                     <td>
 
@@ -123,21 +119,21 @@
 
             <div class="modal-body">
                 <div class="container-fluid">
-                    <form th:method="POST" role="form" th:action="@{/admin/updateUser{id}}"
+                    <form method="post" role="form" th:action="@{/admin/updateUser/(id=${user.getId()})}"
                           th:object="${user}">
 
                         <div class="form-group">
 
-                            <label for="id">ID</label>
-                            <input type="number" class="form-control" id="id" name="id" readonly/>
+                            <label for="id_edit" class="col-form-label">ID</label>
+                            <input type="number" class="form-control" id="id_edit" name="id" readonly/>
 <!--                            <div style="color: red" th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></div>-->
                         </div>
 
 
                         <div class="form-group">
 
-                            <label for="name">Name</label>
-                            <input type="text" class="form-control" name="name" id="name"/>
+                            <label for="name_edit" class="col-form-label">Name</label>
+                            <input type="text" class="form-control" name="name" id="name_edit"/>
 <!--                            <div style="color: red" th:if="${#fields.hasErrors('name')}"-->
 <!--                                 th:errors="*{name}"></div>-->
 
@@ -145,8 +141,8 @@
 
                         <div class="form-group">
 
-                            <label for="Last_Name">Last name</label>
-                            <input type="text" class="form-control" id="Last_Name" name="Last_Name"/>
+                            <label for="Last_Name_edit" class="col-form-label" >Last name</label>
+                            <input type="text" class="form-control" id="Last_Name_edit" name="Last_Name"/>
 <!--                            <div style="color: red" th:if="${#fields.hasErrors('lastName')}"-->
 <!--                                 th:errors="*{lastName}"></div>-->
 
@@ -155,8 +151,8 @@
 
                         <div class="form-group">
 
-                            <label for="age">Age</label>
-                            <input type="number" class="form-control" id="age" name="age" />
+                            <label for="age_edit" class="col-form-label">Age</label>
+                            <input type="number" class="form-control" id="age_edit" name="age" />
 <!--                            <div style="color: red" th:if="${#fields.hasErrors('age')}"-->
 <!--                                 th:errors="*{age}"></div>-->
 
@@ -164,8 +160,8 @@
 
                         <div class="form-group">
 
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control " id="email" name="email"/>
+                            <label for="email_edit" class="col-form-label" >Email</label>
+                            <input type="email" class="form-control " id="email_edit" name="email"/>
 <!--                            <div style="color: red" th:if="${#fields.hasErrors('email')}"-->
 <!--                                 th:errors="*{email}"></div>-->
                         </div>
@@ -173,8 +169,8 @@
 
                         <div class="form-group">
 
-                            <label for="password">Password</label>
-                            <input type="password"  class="form-control " id="password"
+                            <label for="password_edit" class="col-form-label" >Password</label>
+                            <input type="password"  class="form-control " id="password_edit"
                                    name="password"/>
 <!--                            <div style="color: red" th:if="${#fields.hasErrors('password')}"-->
 <!--                                 th:errors="*{password}"></div>-->
@@ -182,8 +178,8 @@
 
                         <div class="form-group">
 
-                            <label for="Role">Role</label>
-                            <select size="2" multiple class="form-control" id="Role" name="Role">
+                            <label for="Role_edit" class="col-form-label" >Role</label>
+                            <select size="2" multiple class="form-control" id="Role_edit" name="Role">
                                 <option value="">ADMIN</option>
                                 <option value="">USER</option>
                             </select>
