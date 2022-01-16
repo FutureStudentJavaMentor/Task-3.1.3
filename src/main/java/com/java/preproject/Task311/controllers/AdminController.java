@@ -7,10 +7,8 @@ import com.java.preproject.Task311.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -28,62 +26,57 @@ public class AdminController {
         this.roleService = roleService;
     }
 
-    @GetMapping("/users")
+    @GetMapping(value = "/users")
     public String getUserList(Model model) {
         model.addAttribute("users", userService.getUsersList());
-        return "BootstrapUsers";
+        model.addAttribute("allRoles", roleService.getAllRoles());
+        return "BootstrapAdminPage";
     }
 
-    @GetMapping("/newUser")
+    @GetMapping(value = "/newUser")
     public String newUser(@ModelAttribute("user") User user, Model model) {
         model.addAttribute("AllRoles", roleService.getAllRoles());
-        return "BootstrapUsers";
+        return "BootstrapAdminPage";
     }
 
 
-    @PostMapping("/newUser")
-    public String createUser(@ModelAttribute("user") @Valid User user, BindingResult result) {
-        if (result.hasErrors()) {
-            return "newUser";
+    @PostMapping(value = "/newUser")
+    public String createUser(@ModelAttribute("user") User user, @RequestParam(name = "RoleName", required = false) String[] RoleName) {
+        if (RoleName != null) {
+            Set<Role> roleSet = new HashSet<>();
+            for (String name : RoleName) {
+                roleSet.add(roleService.findRoleByRoleName(name));
+            }
+            user.setRoles(roleSet);
         }
-        Role role1;
-        Set<Role> roleSet = new HashSet<>();
-        for (Role role : user.getRoles()) {
-            role1 = roleService.findRoleByRoleName(role.getName());
-            roleSet.add(role1);
-        }
-        user.setRoles(roleSet);
         userService.saveNewUser(user);
         return "redirect:/admin/users";
     }
 
 
-    @GetMapping("/updateUser/{id}")
+    @GetMapping(value = "/updateUser/{id}")
     public String updateUser(@PathVariable("id") Long id, Model model) {
 
         model.addAttribute("user", userService.findById(id).orElse(new User()));
         model.addAttribute("AllRoles", roleService.getAllRoles());
-        return "BootstrapUsers";
+        return "BootstrapAdminPage";
     }
 
-    @PostMapping("/updateUser/{id}")
-    public String update(@ModelAttribute("user") @Valid User user, BindingResult result) {
-        if (result.hasErrors()) {
-            return "BootstrapUsers";
+    @PostMapping(value = "/updateUser/{id}")
+    public String update(@ModelAttribute("user") User user, @RequestParam(name = "RoleName", required = false) String[] RoleName) {
+        if (RoleName != null) {
+            Set<Role> roleSet = new HashSet<>();
+            for (String name : RoleName) {
+                roleSet.add(roleService.findRoleByRoleName(name));
+            }
+            user.setRoles(roleSet);
         }
-        Set<Role> roleSet = new HashSet<>();
-        for (Role role : user.getRoles()) {
-            Role role2 = roleService.findRoleByRoleName(role.getName());
-            roleSet.add(role2);
-        }
-        user.setRoles(roleSet);
-
         userService.saveNewUser(user);
 
         return "redirect:/admin/users";
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping(value = "/delete/{id}")
     public String deleteUser(@PathVariable("id") Long id) {
         userService.deleteUser(id);
         return "redirect:/admin/users";

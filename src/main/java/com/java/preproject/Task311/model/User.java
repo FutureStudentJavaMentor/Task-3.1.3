@@ -16,28 +16,28 @@ public class User implements UserDetails {
     private Long id;
 
     @Column(name = "name")
-    @NotEmpty(message = "Не оставляй пожалуйста поле Имя  пустое ")
-    @Size(min = 3, max = 30, message = "Допустимое количество символов от 3 до 30, повторите попытку!")
+//    @NotEmpty(message = "Не оставляй пожалуйста поле Имя  пустое ")
+//    @Size(min = 3, max = 30, message = "Допустимое количество символов от 3 до 30, повторите попытку!")
     private String name;
 
     @Column(name = "last_Name")
-    @NotEmpty(message = "Не оставляй пожалуйста поле Фамилия   пустое ")
-    @Size(min = 3, max = 30, message = "Допустимое количество символов от 3 до 30, повторите попытку!")
+//    @NotEmpty(message = "Не оставляй пожалуйста поле Фамилия   пустое ")
+//    @Size(min = 3, max = 30, message = "Допустимое количество символов от 3 до 30, повторите попытку!")
     private String lastName;
 
     @Column(name = "age")
-    @NotNull(message = "Возраст не может быть отрицательным")
-    @Max(value = 150, message = "Люди столько не живут ")
+//    @NotNull(message = "Возраст не может быть отрицательным")
+//    @Max(value = 150, message = "Люди столько не живут ")
     private Integer age;
 
     @Column(name = "email")
-    @Email(message = "Не оставляй пожалуйста поле Email  пустое ")
-    @Size(min = 3, max = 30, message = "Допустимое количество символов от 3 до 30, повторите попытку!")
+//    @Email(message = "Не оставляй пожалуйста поле Email  пустое ")
+//    @Size(min = 3, max = 30, message = "Допустимое количество символов от 3 до 30, повторите попытку!")
     private String email;
 
     @Column(name = "password")
-    @NotEmpty(message = "Не оставляй пожалуйста поле Пароль  пустое ")
-    @Size(min = 3, max = 100, message = "Допустимое количество символов от 3 до 100, повторите попытку!")
+//    @NotEmpty(message = "Не оставляй пожалуйста поле Пароль  пустое ")
+//    @Size(min = 3, max = 100, message = "Допустимое количество символов от 3 до 100, повторите попытку!")
     private String password;
 
 
@@ -51,6 +51,14 @@ public class User implements UserDetails {
     public User() {
     }
 
+    public User(String name, String lastName, Integer age, String email, String password, Set<Role> roles) {
+        this.name = name;
+        this.lastName = lastName;
+        this.age = age;
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
+    }
 
     public Long getId() {
         return id;

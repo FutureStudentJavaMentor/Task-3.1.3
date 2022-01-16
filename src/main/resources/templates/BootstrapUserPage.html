@@ -19,9 +19,6 @@
 
         <div class="navbar-brand">
             <span> with roles:</span>
-        </div>
-
-        <div class="navbar-brand">
             <span th:each="role : ${#authentication.getAuthorities()}"
                   th:text="${role.getAuthority().substring(5)}"></span>
         </div>
@@ -55,7 +52,7 @@
             <div class="tabbable " id="tabs-67154">
                 <ul class="nav nav-tabs ">
                     <li class="nav-item">
-                        <a href="#panel-471830" class="nav-link active" data-toggle="tab">Users table</a>
+                        <a href="#panel-471830" class="nav-link active" data-toggle="tab">User table</a>
                     </li>
                 </ul>
 

@@ -26,7 +26,13 @@ public class RoleService {
     }
 
     public Role findRoleByRoleName(String RoleName) {
+        if (RoleName.contains("ADMIN")) {
+            RoleName ="ROLE_ADMIN";
+        }else if(RoleName.contains("USER")){
+            RoleName = "ROLE_USER";
+        }
         return roleRepository.findByName(RoleName);
     }
+
 
 }
