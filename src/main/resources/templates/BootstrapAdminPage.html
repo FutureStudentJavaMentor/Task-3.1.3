@@ -9,7 +9,7 @@
     <title>Пользователи</title>
 </head>
 <body>
-<!--Верхняя панель-->
+
 <nav class="navbar navbar-expand-mg text-light bg-dark">
     <div class="navbar-brand">
         <div class="navbar-header">
@@ -27,7 +27,7 @@
         </form>
     </div>
 </nav>
-<!--Боковая панель-->
+
 <div class="container-fluid">
     <div class="row">
         <div class="col bg-white">
@@ -40,10 +40,10 @@
                 </li>
             </ul>
         </div>
-        <!--           Пустые вкалдки-->
+
         <div class="col-10 bg-light">
             <div><h2>Admin panel</h2></div>
-            <!--                <div class="card">-->
+
             <ul class="nav nav-tabs">
                 <li class="nav-item">
                     <a class="nav-link active" id="admin-tab" data-toggle="tab" href="#admin" role="tab"
@@ -56,7 +56,7 @@
             </ul>
 
             <div class="tab-content">
-                <!--                Вкладка All users-->
+
                 <div class="tab-pane fade show active" id="admin" role="tabpanel" aria-labelledby="admin-tab">
                     <div><h5 class="card-header">All users</h5></div>
                     <table class="table table-striped">
@@ -94,7 +94,6 @@
                                 </button>
                             </td>
 
-                            <!--                            Заполнение модального окна Edit user-->
                             <div class="modal fade" th:id="${'edit' + user.id}" aria-hidden="true"
                                  role="dialog" th:aria-labelledby="${'edit' + user.id}">
                                 <div class="modal-dialog">
@@ -157,7 +156,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--                            Заполнение модального окна Delete user-->
+
                             <div class="modal fade" th:id="${'delete' + user.id}" aria-hidden="true"
                                  role="dialog" th:aria-labelledby="${'delete' + user.id}">
                                 <div class="modal-dialog">
@@ -221,7 +220,6 @@
                     </table>
                 </div>
 
-                <!--               Вкладка Add new user-->
                 <div class="tab-pane fade" id="new" role="tabpanel" aria-labelledby="new-tab">
                     <h5 class="card-header">Add new user</h5>
                     <div class="row justify-content-center align-items-center">
