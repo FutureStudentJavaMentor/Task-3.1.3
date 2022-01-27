@@ -1,12 +1,12 @@
-package com.java.preproject.Task311;
+package com.java.preproject.Task313;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import com.java.preproject.Task311.model.Role;
-import com.java.preproject.Task311.model.User;
-import com.java.preproject.Task311.service.RoleService;
-import com.java.preproject.Task311.service.UserService;
+import com.java.preproject.Task313.model.Role;
+import com.java.preproject.Task313.model.User;
+import com.java.preproject.Task313.service.RoleServiceImp;
+import com.java.preproject.Task313.service.UserServiceImp;
 
 import javax.annotation.PostConstruct;
 import java.util.Collections;
@@ -17,12 +17,12 @@ import java.util.Set;
 public class DoAfterLoadProject {
 
 
-    private final UserService userService;
-    private final RoleService roleService;
+    private final UserServiceImp userService;
+    private final RoleServiceImp roleService;
 
 
     @Autowired
-    public DoAfterLoadProject(UserService userService, RoleService roleService) {
+    public DoAfterLoadProject(UserServiceImp userService, RoleServiceImp roleService) {
         this.userService = userService;
         this.roleService = roleService;
     }
@@ -68,9 +68,9 @@ public class DoAfterLoadProject {
         user3.setLastName("user_female_3");
 
 
-        userService.saveNewUser(user1);
-        userService.saveNewUser(user2);
-        userService.saveNewUser(user3);
+        userService.saveOrUpdate(user1);
+        userService.saveOrUpdate(user2);
+        userService.saveOrUpdate(user3);
 
     }
 

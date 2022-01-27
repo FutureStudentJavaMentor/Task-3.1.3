@@ -1,4 +1,4 @@
-package com.java.preproject.Task311.configuration;
+package com.java.preproject.Task313.configuration;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -18,15 +18,13 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
                                         HttpServletResponse httpServletResponse,
                                         Authentication authentication) throws IOException {
         Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
-        httpServletRequest.setCharacterEncoding("utf-8");
-
-        if (roles.contains("ROLE_USER")) {
+        if (roles.contains("ROLE_ADMIN")) {
+            httpServletResponse.sendRedirect("/admin");
+        } else if (roles.contains("ROLE_USER")) {
             httpServletResponse.sendRedirect("/user_info");
-        } else if (roles.contains("ROLE_ADMIN")) {
-            httpServletResponse.sendRedirect("/admin/users");
         }
-
     }
 
-
 }
+
+

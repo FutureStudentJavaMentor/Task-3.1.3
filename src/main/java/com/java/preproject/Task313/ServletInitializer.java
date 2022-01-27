@@ -1,6 +1,5 @@
-package com.java.preproject.Task311;
+package com.java.preproject.Task313;
 
-import com.java.preproject.Task311.configuration.WebSecurityConfig;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 

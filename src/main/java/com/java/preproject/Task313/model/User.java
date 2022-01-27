@@ -1,11 +1,10 @@
-package com.java.preproject.Task311.model;
+package com.java.preproject.Task313.model;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
 import java.util.*;
 
 @Entity
@@ -16,28 +15,18 @@ public class User implements UserDetails {
     private Long id;
 
     @Column(name = "name")
-//    @NotEmpty(message = "Не оставляй пожалуйста поле Имя  пустое ")
-//    @Size(min = 3, max = 30, message = "Допустимое количество символов от 3 до 30, повторите попытку!")
     private String name;
 
     @Column(name = "last_Name")
-//    @NotEmpty(message = "Не оставляй пожалуйста поле Фамилия   пустое ")
-//    @Size(min = 3, max = 30, message = "Допустимое количество символов от 3 до 30, повторите попытку!")
     private String lastName;
 
     @Column(name = "age")
-//    @NotNull(message = "Возраст не может быть отрицательным")
-//    @Max(value = 150, message = "Люди столько не живут ")
     private Integer age;
 
     @Column(name = "email")
-//    @Email(message = "Не оставляй пожалуйста поле Email  пустое ")
-//    @Size(min = 3, max = 30, message = "Допустимое количество символов от 3 до 30, повторите попытку!")
     private String email;
 
     @Column(name = "password")
-//    @NotEmpty(message = "Не оставляй пожалуйста поле Пароль  пустое ")
-//    @Size(min = 3, max = 100, message = "Допустимое количество символов от 3 до 100, повторите попытку!")
     private String password;
 
 

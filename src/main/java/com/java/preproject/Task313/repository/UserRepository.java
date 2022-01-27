@@ -1,6 +1,6 @@
-package com.java.preproject.Task311.repository;
+package com.java.preproject.Task313.repository;
 
-import com.java.preproject.Task311.model.User;
+import com.java.preproject.Task313.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

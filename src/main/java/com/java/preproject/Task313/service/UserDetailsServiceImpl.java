@@ -1,6 +1,6 @@
-package com.java.preproject.Task311.service;
+package com.java.preproject.Task313.service;
 
-import com.java.preproject.Task311.repository.UserRepository;
+import com.java.preproject.Task313.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,9 +22,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        com.java.preproject.Task311.model.User user = userRepository.findByEmail(email);
+        com.java.preproject.Task313.model.User user = userRepository.findByEmail(email);
         if (user == null) {
-            throw new UsernameNotFoundException("User name is null");
+            throw new UsernameNotFoundException("User email is null");
         }
         return new User(user.getEmail(), user.getPassword(), user.getAuthorities());
     }

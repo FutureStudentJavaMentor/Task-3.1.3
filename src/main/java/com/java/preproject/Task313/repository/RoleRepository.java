@@ -1,8 +1,7 @@
-package com.java.preproject.Task311.repository;
+package com.java.preproject.Task313.repository;
 
-import com.java.preproject.Task311.model.Role;
+import com.java.preproject.Task313.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Repository;
 
 @Repository
