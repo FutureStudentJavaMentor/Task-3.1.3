@@ -1,6 +1,6 @@
-let roleList = []; // глобальная переменная для хранения массива ролей
+let ListOfRoles = [];
 
-//вызов метода получения всех юзеров и заполнения таблицы
+
 getAllUsers();
 
 function getAllUsers() {
@@ -16,7 +16,7 @@ function getAllUsers() {
             method: 'GET',
             dataType: 'json',
             success: function (roles) {
-                roleList = roles;
+                ListOfRoles = roles;
             }
         });
     });
@@ -33,7 +33,7 @@ function createRows(user) {
     user_data += '<td>';
     let roles = user.roles;
     for (let role of roles) {
-        user_data +=  role.name.substring(5) +' ';
+        user_data += role.name.substring(5) + ' ';
     }
     user_data += '</td>' +
         '<td>' + '<input id="btnEdit" value="Edit" type="button" ' +
@@ -62,7 +62,6 @@ function getUserRolesForEdit() {
 }
 
 
-
 $(document).on('click', '.edit-btn', function () {
     const user_id = $(this).attr('data-id');
     console.log("editUserId: " + JSON.stringify(user_id));
@@ -79,10 +78,10 @@ $(document).on('click', '.edit-btn', function () {
             $('#editPassword').val(user.password);
             $('#editRole').empty();
 
-            roleList.map(role => {
+            ListOfRoles.map(role => {
                 let flag = user.roles.find(item => item.id === role.id) ? 'selected' : '';
                 $('#editRole').append('<option id="' + role.id + '" ' + flag + ' name="' + role.name + '" >' +
-                    role.name.substring(5)+ ' ' + '</option>')
+                    role.name.substring(5) + ' ' + '</option>')
             })
 
         }
@@ -96,7 +95,7 @@ $('#editButton').on('click', (e) => {
 
     let editUser = {
         id: $("input[name='id']").val(),
-        username: $("input[name='name']").val(),
+        name: $("input[name='name']").val(),
         lastName: $("input[name='lastName']").val(),
         age: $("input[name='age']").val(),
         email: $("input[name='email']").val(),
@@ -124,7 +123,6 @@ $('#editButton').on('click', (e) => {
     });
 });
 
-//Delete user
 
 $(document).on('click', '.del-btn', function () {
 
@@ -144,10 +142,10 @@ $(document).on('click', '.del-btn', function () {
             $('#delPassword').empty().val(user.password);
             $('#delRole').empty();
 
-            roleList.map(role => {
+            ListOfRoles.map(role => {
                 let flag = user.roles.find(item => item.id === role.id) ? 'selected' : '';
                 $('#delRole').append('<option id="' + role.id + '" ' + flag + ' name="' + role.name + '" >' +
-                    role.name.substring(5)+ ' ' + '</option>')
+                    role.name.substring(5) + ' ' + '</option>')
             })
         }
     });
@@ -177,13 +175,11 @@ function getUserRolesForAdd() {
         role.id = $(this).attr('id');
         role.name = $(this).attr('name');
         allRoles.push(role);
-        console.log("role: " + JSON.stringify(role));
     });
 
     return allRoles;
 }
 
-//Add New User
 
 $('.newUser').on('click', () => {
 
@@ -193,9 +189,9 @@ $('.newUser').on('click', () => {
     $('#email').empty().val('')
     $('#password').empty().val('')
     $('#addRole').empty().val('')
-    roleList.map(role => {
+    ListOfRoles.map(role => {
         $('#addRole').append('<option id="' + role.id + '" name="' + role.name + '">' +
-            role.name.substring(5)+ '' + '</option>')
+            role.name.substring(5) + '' + '</option>')
     })
 
 })
